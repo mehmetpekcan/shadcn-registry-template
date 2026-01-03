@@ -6,7 +6,7 @@ A template for building and publishing your own custom shadcn registry component
 
 - 📦 **Ready-to-use template** - Fork and start building immediately
 - 📚 **Documentation site** - Beautiful docs powered by Fumadocs
-- 🚀 **One-click deploy** - Deploy to Vercel with zero configuration
+- 🚀 **Deploy ready** - Deploy anywhere
 - 🎨 **Shadcn registry compatible** - Works with `npx shadcn add`
 
 ## Quick Start
@@ -32,14 +32,14 @@ pnpm registry:build
 pnpm dev
 ```
 
-7. **Deploy to Vercel** and share your component!
+7. **Deploy** and share your component!
 
 ## Usage
 
 Once deployed, users can install your component with:
 
 ```bash
-npx shadcn@latest add https://your-domain.vercel.app/r/your-component.json
+npx shadcn@latest add https://your-domain.com/r/your-component.json
 ```
 
 ## Project Structure

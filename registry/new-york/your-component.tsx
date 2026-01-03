@@ -33,7 +33,7 @@ const YourComponent = forwardRef<HTMLDivElement, YourComponentProps>(
           Replace this placeholder with your custom shadcn component
         </p>
         <br />
-        <p className="text-muted-foreground max-w-sm text-center text-xs">
+        <p className="text-muted-foreground text-center text-xs">
           Edit{" "}
           <code className="bg-muted rounded px-1.5 py-0.5 text-xs">
             registry/new-york/your-component.tsx

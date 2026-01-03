@@ -10,42 +10,18 @@ A **ready-to-use template** for creating and publishing custom components to the
 - 📦 **Simple structure** - One component file + one config file
 - 📚 **Documentation site** - Powered by Fumadocs
 - 🎨 **Registry compatible** - Works with `npx shadcn add`
-- 🚀 **Deploy ready** - One-click Vercel deployment
+- 🚀 **Deploy ready** - Deploy anywhere
 
 ## How It Works
 
-```
-registry/
-└── new-york/
-    └── your-component.tsx   ← Your component
+1. Edit your component at `registry/new-york/your-component.tsx`
+2. Update `registry.json` with your component name and details
+3. Run `pnpm registry:build`
 
-registry.json                ← Component metadata
-```
-
-When you run `pnpm registry:build`, it generates files in `public/r/` that the shadcn CLI can install from.
-
-## Quick Start
+That's it. Deploy your app and users can install your component:
 
 ```bash
-# 1. Fork this template on GitHub
-
-# 2. Install dependencies
-pnpm install
-
-# 3. Edit your component
-# → registry/new-york/your-component.tsx
-
-# 4. Update registry.json with your component details
-
-# 5. Build & run
-pnpm registry:build
-pnpm dev
-```
-
-Once deployed, users install your component with:
-
-```bash
-npx shadcn@latest add https://your-site.vercel.app/r/your-component.json
+npx shadcn@latest add https://your-site.com/r/your-component.json
 ```
 
 ## FAQ
