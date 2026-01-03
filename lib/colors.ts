@@ -1,26 +1,22 @@
-import { z } from "zod"
-
 import { colors } from "@/lib/registry-colors"
 
-const colorSchema = z.object({
-  name: z.string(),
-  id: z.string(),
-  scale: z.number(),
-  className: z.string(),
-  hex: z.string(),
-  rgb: z.string(),
-  hsl: z.string(),
-  foreground: z.string(),
-  oklch: z.string(),
-  var: z.string(),
-})
+type ColorItem = {
+  name: string
+  id: string
+  scale: number
+  className: string
+  hex: string
+  rgb: string
+  hsl: string
+  foreground: string
+  oklch: string
+  var: string
+}
 
-const colorPaletteSchema = z.object({
-  name: z.string(),
-  colors: z.array(colorSchema),
-})
-
-export type ColorPalette = z.infer<typeof colorPaletteSchema>
+export type ColorPalette = {
+  name: string
+  colors: ColorItem[]
+}
 
 export function getColorFormat(color: Color) {
   return {
@@ -35,44 +31,39 @@ export function getColorFormat(color: Color) {
 
 export type ColorFormat = keyof ReturnType<typeof getColorFormat>
 
-export function getColors() {
-  const tailwindColors = colorPaletteSchema.array().parse(
-    Object.entries(colors)
-      .map(([name, color]) => {
-        if (!Array.isArray(color)) {
-          return null
-        }
+export function getColors(): ColorPalette[] {
+  const tailwindColors = Object.entries(colors)
+    .map(([name, color]) => {
+      if (!Array.isArray(color)) {
+        return null
+      }
 
-        return {
-          name,
-          colors: color.map((color) => {
-            const rgb = color.rgb.replace(
-              /^rgb\((\d+),(\d+),(\d+)\)$/,
+      return {
+        name,
+        colors: color.map((c) => {
+          const rgb = c.rgb.replace(/^rgb\((\d+),(\d+),(\d+)\)$/, "$1 $2 $3")
+
+          return {
+            ...c,
+            name,
+            id: `${name}-${c.scale}`,
+            className: `${name}-${c.scale}`,
+            var: `--color-${name}-${c.scale}`,
+            rgb,
+            hsl: c.hsl.replace(
+              /^hsl\(([\d.]+),([\d.]+%),([\d.]+%)\)$/,
               "$1 $2 $3"
-            )
-
-            return {
-              ...color,
-              name,
-              id: `${name}-${color.scale}`,
-              className: `${name}-${color.scale}`,
-              var: `--color-${name}-${color.scale}`,
-              rgb,
-              hsl: color.hsl.replace(
-                /^hsl\(([\d.]+),([\d.]+%),([\d.]+%)\)$/,
-                "$1 $2 $3"
-              ),
-              oklch: `oklch(${color.oklch.replace(
-                /^oklch\(([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)\)$/,
-                "$1 $2 $3"
-              )})`,
-              foreground: getForegroundFromBackground(rgb),
-            }
-          }),
-        }
-      })
-      .filter(Boolean)
-  )
+            ),
+            oklch: `oklch(${c.oklch.replace(
+              /^oklch\(([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)\)$/,
+              "$1 $2 $3"
+            )})`,
+            foreground: getForegroundFromBackground(rgb),
+          }
+        }),
+      }
+    })
+    .filter((item): item is ColorPalette => item !== null)
 
   return tailwindColors
 }
