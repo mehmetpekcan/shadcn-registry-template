@@ -1,0 +1,100 @@
+---
+title: Installation
+description: How to use this template to build your own shadcn component.
+---
+
+## For Template Users
+
+If you want to **build your own component registry**, follow these steps:
+
+### 1. Fork the Template
+
+Click "Use this template" on [GitHub](https://github.com/mehmetpekcan/shadcn-component-template) to create your own repository.
+
+### 2. Install Dependencies
+
+```bash
+pnpm install
+```
+
+### 3. Replace the Placeholder Component
+
+Edit the placeholder component at `registry/new-york-v4/ui/your-component.tsx`:
+
+```tsx
+import { HTMLAttributes, forwardRef } from "react"
+
+export interface YourComponentProps extends HTMLAttributes<HTMLDivElement> {
+  // Add your custom props here
+}
+
+const YourComponent = forwardRef<HTMLDivElement, YourComponentProps>(
+  ({ className, ...props }, ref) => {
+    return (
+      <div ref={ref} className={className} {...props}>
+        {/* Your component implementation */}
+      </div>
+    )
+  }
+)
+
+YourComponent.displayName = "YourComponent"
+
+export { YourComponent }
+```
+
+### 4. Update the Registry
+
+Edit `registry/registry-ui.ts` to match your component:
+
+```ts
+export const ui: Registry["items"] = [
+  {
+    name: "your-component",
+    type: "registry:ui",
+    title: "Your Component",
+    description: "Description of your component.",
+    files: [
+      {
+        path: "ui/your-component.tsx",
+        target: "components/ui/your-component.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+]
+```
+
+### 5. Build the Registry
+
+```bash
+pnpm registry:build
+```
+
+### 6. Deploy to Vercel
+
+Push your changes to GitHub and deploy to Vercel. Your component will be available at:
+
+```bash
+npx shadcn@latest add https://your-domain.vercel.app/r/your-component.json
+```
+
+---
+
+## For Component Users
+
+If you want to **install a component** from a registry built with this template:
+
+```bash
+npx shadcn@latest add https://shadcn-component-template.vercel.app/r/your-component.json
+```
+
+Then use it in your project:
+
+```tsx
+import { YourComponent } from "@/components/ui/your-component"
+
+export function Demo() {
+  return <YourComponent>Hello World</YourComponent>
+}
+```

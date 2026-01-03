@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Shadcn Component Template Registry</title>
+    <description>RSS feed for Shadcn Component Template UI components registry</description>
+    <link>https://shadcn-component-template.vercel.app</link>
+    <atom:link href="https://shadcn-component-template.vercel.app/rss.xml" rel="self" type="application/rss+xml"/>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 03 Jan 2026 12:20:53 GMT</lastBuildDate>
+    <generator>Shadcn Component Template RSS Generator</generator>
+    <item>
+      <title>Your Component</title>
+      <description>A placeholder component. Replace this with your custom shadcn component.</description>
+      <link>https://shadcn-component-template.vercel.app/docs</link>
+      <guid>https://shadcn-component-template.vercel.app/r/your-component.json</guid>
+      <pubDate>Sat, 03 Jan 2026 12:20:53 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

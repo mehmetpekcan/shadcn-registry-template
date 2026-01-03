@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "your-component",
+  "title": "Your Component",
+  "description": "A placeholder component. Replace this with your custom shadcn component.",
+  "files": [
+    {
+      "path": "registry/new-york-v4/ui/your-component.tsx",
+      "content": "import { HTMLAttributes, forwardRef } from \"react\"\n\nexport interface YourComponentProps extends HTMLAttributes<HTMLDivElement> {}\n\n/**\n * 🚀 YOUR COMPONENT TEMPLATE\n *\n * This is a placeholder component. Replace this with your actual component implementation.\n *\n * Steps to customize:\n * 1. Rename this file to match your component name\n * 2. Update the component logic and props\n * 3. Update registry/registry-ui.ts with your component details\n * 4. Run `pnpm registry:build` to rebuild the registry\n *\n * For more information, visit the documentation.\n */\nconst YourComponent = forwardRef<HTMLDivElement, YourComponentProps>(\n  ({ className, ...props }, ref) => {\n    return (\n      <div\n        ref={ref}\n        className={className}\n        style={{\n          padding: \"2rem\",\n          border: \"2px dashed #666\",\n          borderRadius: \"0.5rem\",\n          textAlign: \"center\",\n          backgroundColor: \"rgba(0,0,0,0.02)\",\n        }}\n        {...props}\n      >\n        <p style={{ margin: 0, fontSize: \"1.25rem\", fontWeight: 600 }}>\n          🧩 Your Component Here\n        </p>\n        <p\n          style={{ margin: \"0.5rem 0 0\", fontSize: \"0.875rem\", opacity: 0.7 }}\n        >\n          Replace this placeholder with your custom shadcn component\n        </p>\n      </div>\n    )\n  }\n)\n\nYourComponent.displayName = \"YourComponent\"\n\nexport { YourComponent }\n\n",
+      "type": "registry:ui",
+      "target": "components/ui/your-component.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}
