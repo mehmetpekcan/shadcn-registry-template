@@ -5,6 +5,7 @@ import * as React from "react"
 import { Callout } from "@/components/callout"
 import { CodeBlockCommand } from "@/components/code-block-command"
 import { CodeTabs } from "@/components/code-tabs"
+import { ComponentPreview } from "@/components/component-preview"
 import { CopyButton } from "@/components/copy-button"
 import { getIconForLanguageExtension } from "@/components/icons"
 import {
@@ -329,6 +330,12 @@ export const mdxComponents = {
   AlertDescription,
   AspectRatio,
   CodeTabs,
+  ComponentPreview: ({
+    className,
+    ...props
+  }: React.ComponentProps<typeof ComponentPreview>) => (
+    <ComponentPreview className={cn("mt-6", className)} {...props} />
+  ),
   Link: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
     <Link
       className={cn("font-medium underline underline-offset-4", className)}
