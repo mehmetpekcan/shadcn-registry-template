@@ -1,20 +1,20 @@
-import { ArrowRightIcon } from "lucide-react";
-import { Metadata } from "next";
-import Link from "next/link";
+import { ArrowRightIcon } from "lucide-react"
+import { Metadata } from "next"
+import Link from "next/link"
 
-import { Button } from "@/components/ui/button";
-import { siteConfig } from "@/lib/config";
+import { Button } from "@/components/ui/button"
+import { siteConfig } from "@/lib/config"
 
-import { CommandBox } from "@/components/command-box";
+import { CommandBox } from "@/components/command-box"
 
-const title = "Shadcn Registry Kit";
+const title = "Shadcn Registry Kit"
 const description =
-  "A starter kit for building and publishing your own shadcn registry components. Fork, customize, and deploy.";
+  "A starter kit for building and publishing your own shadcn registry components. Fork, customize, and deploy."
 
-const installCommand = `npx shadcn@latest add ${siteConfig.url}/r/your-component.json`;
+const installCommand = `npx shadcn@latest add ${siteConfig.url}/r/your-component.json`
 
-export const dynamic = "force-static";
-export const revalidate = false;
+export const dynamic = "force-static"
+export const revalidate = false
 
 export const metadata: Metadata = {
   title,
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
       },
     ],
   },
-};
+}
 
 export default function IndexPage() {
   return (
@@ -73,6 +73,6 @@ export default function IndexPage() {
         <YourComponent className="w-full max-w-md" />
       </div>
     </section>
-  );
+  )
 }
-import { YourComponent } from "@/registry/new-york/your-component";
+import { YourComponent } from "@/registry/new-york/your-component"

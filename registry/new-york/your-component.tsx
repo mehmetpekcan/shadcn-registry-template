@@ -21,7 +21,10 @@ const YourComponent = forwardRef<HTMLDivElement, YourComponentProps>(
     return (
       <div
         ref={ref}
-        className={cn("p-4 rounded-md text-center bg-muted/20 space-y-2 border border-muted h-48 flex items-center flex-col justify-center", className)}
+        className={cn(
+          "p-4 rounded-md text-center bg-muted/20 space-y-2 border border-muted h-48 flex items-center flex-col justify-center",
+          className
+        )}
         {...props}
       >
         <p className="text-sm text-muted-foreground/70">

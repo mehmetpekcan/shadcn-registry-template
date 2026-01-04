@@ -1,22 +1,22 @@
-"use client";
+"use client"
 
-import { CheckIcon, CopyIcon } from "lucide-react";
-import * as React from "react";
+import { CheckIcon, CopyIcon } from "lucide-react"
+import * as React from "react"
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
 interface CommandBoxProps {
-  command: string;
+  command: string
 }
 
 export function CommandBox({ command }: CommandBoxProps) {
-  const [copied, setCopied] = React.useState(false);
+  const [copied, setCopied] = React.useState(false)
 
   const copyCommand = async () => {
-    await navigator.clipboard.writeText(command);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1000);
-  };
+    await navigator.clipboard.writeText(command)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 1000)
+  }
 
   return (
     <div className="group relative flex w-full max-w-2xl items-center px-4">
@@ -41,5 +41,5 @@ export function CommandBox({ command }: CommandBoxProps) {
         </button>
       </div>
     </div>
-  );
+  )
 }
