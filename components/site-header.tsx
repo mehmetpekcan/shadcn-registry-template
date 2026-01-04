@@ -1,27 +1,24 @@
-import Link from "next/link"
+import { PackageIcon } from "lucide-react";
+import Link from "next/link";
 
-import { LogoIcon } from "@/assets/icons"
-import { CommandMenu } from "@/components/command-menu"
-import { GitHubLink } from "@/components/github-link"
-import { MainNav } from "@/components/main-nav"
-import { MobileNav } from "@/components/mobile-nav"
-import { ModeSwitcher } from "@/components/mode-switcher"
-import { SiteConfig } from "@/components/site-config"
-// import blocks from "@/registry/__blocks__.json"
-import { Button } from "@/components/ui/button"
-import { Separator } from "@/components/ui/separator"
-import { getColors } from "@/lib/colors"
-import { siteConfig } from "@/lib/config"
-import { source } from "@/lib/source"
+import { CommandMenu } from "@/components/command-menu";
+import { GitHubLink } from "@/components/github-link";
+import { MainNav } from "@/components/main-nav";
+import { MobileNav } from "@/components/mobile-nav";
+import { ModeSwitcher } from "@/components/mode-switcher";
+import { Button } from "@/components/ui/button";
+import { getColors } from "@/lib/colors";
+import { siteConfig } from "@/lib/config";
+import { source } from "@/lib/source";
 
 export function SiteHeader() {
-  const colors = getColors()
-  const pageTree = source.pageTree
+  const colors = getColors();
+  const pageTree = source.pageTree;
 
   return (
     <header className="bg-background sticky top-0 z-50 w-full">
       <div className="container-wrapper 3xl:fixed:px-0 px-6">
-        <div className="3xl:fixed:container flex h-(--header-height) items-center gap-2 **:data-[slot=separator]:!h-4">
+        <div className="3xl:fixed:container flex h-(--header-height) items-center gap-2">
           <MobileNav
             tree={pageTree}
             items={siteConfig.navItems}
@@ -34,7 +31,7 @@ export function SiteHeader() {
             className="hidden size-8 lg:flex"
           >
             <Link href="/">
-              <LogoIcon className="size-5" />
+              <PackageIcon className="size-5" />
               <span className="sr-only">{siteConfig.name}</span>
             </Link>
           </Button>
@@ -47,18 +44,11 @@ export function SiteHeader() {
                 navItems={siteConfig.navItems}
               />
             </div>
-            <Separator
-              orientation="vertical"
-              className="ml-2 hidden lg:block"
-            />
             <GitHubLink />
-            <Separator orientation="vertical" className="3xl:flex hidden" />
-            <SiteConfig className="3xl:flex hidden" />
-            <Separator orientation="vertical" />
             <ModeSwitcher />
           </div>
         </div>
       </div>
     </header>
-  )
+  );
 }

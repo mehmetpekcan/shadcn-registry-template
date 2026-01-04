@@ -1,7 +1,0 @@
-export { LogoIcon } from "./logo"
-export { GitHubIcon } from "./github"
-export { TwitterIcon } from "./twitter"
-export { CssIcon } from "./css"
-export { TypeScriptIcon } from "./typescript"
-export { JsonIcon } from "./json"
-export { SpinnerIcon } from "./spinner"

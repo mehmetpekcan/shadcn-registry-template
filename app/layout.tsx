@@ -1,16 +1,15 @@
-import type { Metadata } from "next"
+import type { Metadata } from "next";
 
-import { ActiveThemeProvider } from "@/components/active-theme"
-import { Analytics } from "@/components/analytics"
-import { TailwindIndicator } from "@/components/tailwind-indicator"
-import { ThemeProvider } from "@/components/theme-provider"
-import { Toaster } from "@/components/ui/sonner"
-import { LayoutProvider } from "@/hooks/use-layout"
-import { META_THEME_COLORS, siteConfig } from "@/lib/config"
-import { fontVariables } from "@/lib/fonts"
-import { cn } from "@/lib/utils"
+import { ActiveThemeProvider } from "@/components/active-theme";
+import { Analytics } from "@/components/analytics";
+import { TailwindIndicator } from "@/components/tailwind-indicator";
+import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@/components/ui/sonner";
+import { META_THEME_COLORS, siteConfig } from "@/lib/config";
+import { fontVariables } from "@/lib/fonts";
+import { cn } from "@/lib/utils";
 
-import "@/styles/globals.css"
+import "@/styles/globals.css";
 
 export const metadata: Metadata = {
   title: {
@@ -71,12 +70,12 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   manifest: `${siteConfig.url}/site.webmanifest`,
-}
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -111,9 +110,7 @@ export default function RootLayout({
                 if (localStorage.theme === 'dark' || ((!('theme' in localStorage) || localStorage.theme === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
                   document.querySelector('meta[name="theme-color"]').setAttribute('content', '${META_THEME_COLORS.dark}')
                 }
-                if (localStorage.layout) {
-                  document.documentElement.classList.add('layout-' + localStorage.layout)
-                }
+                document.documentElement.classList.add('layout-fixed')
               } catch (_) {}
             `,
           }}
@@ -127,16 +124,14 @@ export default function RootLayout({
         )}
       >
         <ThemeProvider>
-          <LayoutProvider>
-            <ActiveThemeProvider>
-              {children}
-              <TailwindIndicator />
-              <Toaster position="top-center" />
-              <Analytics />
-            </ActiveThemeProvider>
-          </LayoutProvider>
+          <ActiveThemeProvider>
+            {children}
+            <TailwindIndicator />
+            <Toaster position="top-center" />
+            <Analytics />
+          </ActiveThemeProvider>
         </ThemeProvider>
       </body>
     </html>
-  )
+  );
 }

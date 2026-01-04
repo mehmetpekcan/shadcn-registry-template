@@ -1,31 +1,18 @@
-import { FileIcon } from "lucide-react"
-
-import { CssIcon, JsonIcon, TypeScriptIcon } from "@/assets/icons"
-
-// Re-export all icons from assets for backwards compatibility
-export {
-  LogoIcon,
-  GitHubIcon,
-  TwitterIcon,
-  CssIcon,
-  TypeScriptIcon,
-  JsonIcon,
-  SpinnerIcon,
-} from "@/assets/icons"
+import { FileCodeIcon, FileIcon, FileJsonIcon } from "lucide-react";
 
 export function getIconForLanguageExtension(language: string) {
   switch (language) {
     case "json":
-      return <JsonIcon />
+      return <FileJsonIcon className="size-4" />;
     case "css":
-      return <CssIcon className="fill-foreground" />
+      return <FileCodeIcon className="size-4" />;
     case "js":
     case "jsx":
     case "ts":
     case "tsx":
     case "typescript":
-      return <TypeScriptIcon className="fill-foreground" />
+      return <FileCodeIcon className="size-4" />;
     default:
-      return <FileIcon />
+      return <FileIcon className="size-4" />;
   }
 }
